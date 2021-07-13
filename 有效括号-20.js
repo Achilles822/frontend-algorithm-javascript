@@ -31,15 +31,32 @@
 // 链接：https://leetcode-cn.com/problems/valid-parentheses
 // 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-var isValid = function (s) {
+
+// 解题思路
+// 1.先判断s是否为true且为偶数位；
+// 2.利用栈，左边符号添加进去，右边符号取栈中的最后一位与对象中的左符号属性对应的值比较是否相等；
+// 3.最后判断栈中是否还留有元素。
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+ var isValid = function (s) {
+  let map = {
+      '(': ')',
+      '{': '}',
+      '[': ']'
+  }
   let stack = []
-  for (let i = 0; i < s.length; i++) {
-    let ch = s.charAt(i)
-    if (ch == '(' || ch == '[' || ch == '{') stack.push(ch)
-    if (!stack.length) return false
-    if (ch == ')' && stack.pop() !== '(') return false
-    if (ch == ']' && stack.pop() !== '[') return false
-    if (ch == '}' && stack.pop() !== '{') return false
+  for(let char of s){
+      if(char === '(' || char === '[' || char === '{'){
+          stack.push(char)
+      }else{
+          let pop = stack.pop()
+          if(map[pop]!== char){
+              return false
+          }
+      }
   }
   return stack.length === 0
-}
+};
