@@ -13,21 +13,19 @@
 // 输出：[1]
 // 示例 4：
 
-
 // 输入：root = [1,2]
 // 输出：[2,1]
 // 示例 5：
 
-
 // 输入：root = [1,null,2]
 // 输出：[1,2]
-//  
+//
 
 // 提示：
 
 // 树中节点数目在范围 [0, 100] 内
 // -100 <= Node.val <= 100
-//  
+//
 
 // 进阶: 递归算法很简单，你可以通过迭代算法完成吗？
 
@@ -50,14 +48,14 @@
  * @return {number[]}
  */
 // 递归：
- var inorderTraversal = function (root) {
-    let ret = []
-    const inorder = (root) => {
-        if (!root) return
-        inorder(root.left)
-        ret.push(root.val)
-        inorder(root.right)
-    }
-    inorder(root)
-    return ret
-};
+var inorderTraversal = function (root) {
+  let ret = []
+  const inOrder = root => {
+    if (!root) return
+    inOrder(root.left)
+    ret.push(root.val)
+    inOrder(root.right)
+  }
+  inOrder(root)
+  return ret
+}
