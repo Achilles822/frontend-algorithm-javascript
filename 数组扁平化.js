@@ -5,5 +5,5 @@
 let flatten = nestedList => {
   nestedList.reduce((pre, cur) => {
     pre.concat(Array.isArray(cur) ? flatten(cur) : cur, [])
-  })
+  },[])
 }
